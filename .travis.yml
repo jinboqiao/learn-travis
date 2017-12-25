@@ -1,13 +1,13 @@
 language: node_js
 node_js:
-- node
+  - node
 env:
-- MY_VAR=EverythignIsAwesome
-- NODE_ENV=TEST
-- secure: TsYgfDTXM9DhteoxruftAIm9qbcVFTfBbPmi/Mv9lGkDKZ/b4pputXgbfy2On7dsu5s9Bio/P4Nri61sgVHZm6AJIsNWf2D6Ggiz94oddr0r+7dPp9yqTziPQAKNmMSzCtLff9Dl4BSOiasy/aQy5M+NrD6kXex0xjZyTIEndzk=
+  - MY_VAR=EverythignIsAwesome
+  - NODE_ENV=TEST
+  - secure: TsYgfDTXM9DhteoxruftAIm9qbcVFTfBbPmi/Mv9lGkDKZ/b4pputXgbfy2On7dsu5s9Bio/P4Nri61sgVHZm6AJIsNWf2D6Ggiz94oddr0r+7dPp9yqTziPQAKNmMSzCtLff9Dl4BSOiasy/aQy5M+NrD6kXex0xjZyTIEndzk=
 before_install:
-- openssl aes-256-cbc -K $encrypted_cfd49ee2eab2_key -iv $encrypted_cfd49ee2eab2_iv
-  -in id_rsa.enc -out ~\/.ssh/id_rsa -d
+  - openssl aes-256-cbc -K $encrypted_cfd49ee2eab2_key -iv $encrypted_cfd49ee2eab2_iv
+    -in id_rsa.enc -out ~\/.ssh/id_rsa -d
 script:
   - npm test
 after_success:
