@@ -11,6 +11,7 @@ before_install:
   - chmod 600 ~/.ssh/id_rsa
   - echo -e "Host 45.76.1.31\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
 script:
+  - npm install -g pm2
   - npm test
 after_success:
   - npm prune --production  # 删除devDependencies
@@ -18,4 +19,4 @@ after_success:
   - scp demo.tar.bz2 root@45.76.1.31:~/  # 复制到生产服务器上
   - ssh root@45.76.1.31 'mkdir -p demo && tar -jxf demo.tar.bz2 -C demo'
 解压:
-  - ssh root@45.76.1.31 'cd demo && node hello.js'
+  - ssh root@45.76.1.31 'cd demo && pm2 hello.js'
