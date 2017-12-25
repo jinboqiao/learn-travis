@@ -15,7 +15,7 @@ script:
   - npm test
 after_success:
   - npm prune --production  # 删除devDependencies
-  - tar -jcf demo.tar *    # 打包并压缩代码
-  - scp demo.tar root@45.76.1.31:~/  # 复制到生产服务器上
-  - ssh root@45.76.1.31 'mkdir -p demo && tar -jxf demo.tar -C demo'
+  - tar -jcvf demo.tar.bz2 *    # 打包并压缩代码
+  - scp demo.tar.bz2 root@45.76.1.31:~/  # 复制到生产服务器上
+  - ssh root@45.76.1.31 'mkdir -p demo && tar -jfxv demo.tar.bz2 -C demo'
   - ssh root@45.76.1.31 'cd demo && pm2 hello.js'
